@@ -2,10 +2,9 @@
 
 require_relative 'captcha'
 require 'minitest/autorun'
-#require 'test/unit'
 
 class TestCaptcha < Minitest::Test
-  def test_given
+  def test_given_examples
     assert_equal(3, Captcha.new('1122').process_captcha())
     assert_equal(4, Captcha.new('1111').process_captcha())
     assert_equal(0, Captcha.new('1234').process_captcha())

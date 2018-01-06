@@ -1,9 +1,7 @@
 #! /usr/bin/env ruby
-require 'pry'
 
 class Captcha
   def initialize(string)
-    #binding.pry
     @original = string
   end
   
@@ -35,9 +33,7 @@ class Captcha
     @output = ''
     @original.each_char do
       |x|
-      #binding.pry
       @output += x if x === @prev
-      #binding.pry
       @prev = x
     end
     @output += @last if @last === @first

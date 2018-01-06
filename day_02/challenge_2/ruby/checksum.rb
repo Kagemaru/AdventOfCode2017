@@ -13,13 +13,14 @@ class Checksum
   end
   
   def run()
-    puts calculate_checksum()
+    puts sum_dividables()
   end
   
-  def calculate_checksum()
+  def sum_dividables()
     checksum = 0
     @original.each do
       |row|
+      
       checksum += calculate_row(row)
     end
     
@@ -27,6 +28,17 @@ class Checksum
   end
   
   def calculate_row(row)
-    return row.max - row.min
+    output = 0
+    row.each_with_index do
+      |v, i|
+      row.each_with_index do
+        |v2, i2|
+        next if i == i2
+        output = v / v2 if v % v2 == 0
+        output = v2 / v if v2 % v == 0
+        break if output > 0
+      end
+    end
+    return output
   end
 end
